@@ -5,7 +5,7 @@ def group_by_percentage(df, col_name, asc = False):
     df_count['percentage'] = round((df_count['count'] / df_count['count'].sum()) * 100, 2)
     return df_count
 
- # Group by multiple columns, cols is a list of str, groupBy1 is a str(need improve)
+ # Group by multiple columns, cols is a list of str, groupBy1 is list of str
 def group_by_percentage_cols(df, cols, groupBy1):
     df_out = df_merge.groupby(cols).size().to_frame("count").reset_index()
     df_out["pct"] = df_out["count"] / df_out.groupby(groupBy1)["count"].transform("sum")
